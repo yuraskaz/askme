@@ -23,9 +23,9 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /@/
   #если максимальная длина юзернейма более 40 символов
   #объект не будет создан
-  validates :username , length:   {maximum: 41}
+  validates :username, length: {maximum: 41}
   #проверка на символы юзернейма
-  validates :username , format: { with: /\A[a-zA-Z0-9_]+\z/}
+  validates :username, format: {with: /\A[a-zA-Z0-9_]+\z/}
 
   # виртуальное поле, которое не сохраняется в базу
   # из него перед сохранение читается пароль, и сохраняется в базу уже
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
       # создаем хэш пароля — длинная уникальная строка, из которой невозможно восстановить
       # исходный пароль
       self.password_hash = User.hash_to_string(
-        OpenSSL::PKCS5.pbkdf2_hmac(self.password, self.password_salt, ITERATIONS, DIGEST.length, DIGEST)
+          OpenSSL::PKCS5.pbkdf2_hmac(self.password, self.password_salt, ITERATIONS, DIGEST.length, DIGEST)
       )
     end
     # оба поля окажутся записанными в базу
