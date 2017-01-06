@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   # она же добавляет метод .questions к данному объекту
   has_many :questions
 
+
+  #преобразование юзернейма в нижний  регистр перед началом общих валидаций
+  before_validation :downcase_username
+
   # если не задан email и username, объект не будет сохранен в базу
   validates :email, :username, presence: true
 
@@ -42,7 +46,10 @@ class User < ActiveRecord::Base
 
   # перед сохранением объекта в базу - создаем зашифрованный пароль, который будет хранится в БД
   before_save :encrypt_password
-
+  # метод преобразующий юзернейм в нижний регистр
+  def downcase_username
+    self.username.downcase!
+  end
 
   # шифруем пароль, если он задан
   def encrypt_password
