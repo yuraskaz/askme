@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     redirect_to root_url,alert: 'Вы уже залогинены' if current_user.present?
     @user = User.new(user_params)
     if @user.save
+      session[:user_id]= @user.id
       redirect_to root_url, notice: 'пользователь успешно зарегестрирован!'
     else
       render 'new'
