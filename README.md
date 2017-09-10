@@ -1,28 +1,30 @@
-== README
+## Askme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+***
+Askme is a social network. A purpose of the one is to get answers to your questions.
 
-Things you may want to cover:
+##### Web page:
+[Askme](http://http://askmenow17.herokuapp.com/)
 
-* Ruby version
+### Launching
+***
+##### Requirements:
+* Ruby version _>= 2.3.0_
+* Rails version _4.2.7.1_
 
-* System dependencies
+##### Commands
+Clone the repository to your local machine and run following commands:
 
-* Configuration
+```
+$ bundle
+```
 
-* Database creation
+```
+$ bundle exec rake db:migrate
+```
 
-* Database initialization
+```
+rails s
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Open a `localhost:3000` page in your browser.
